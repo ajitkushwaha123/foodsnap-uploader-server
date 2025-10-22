@@ -11,7 +11,7 @@ export async function getBrowser() {
     const hasSession = fs.existsSync(STORAGE_PATH);
 
     browser = await chromium.launch({
-      headless: false, // headless false to look like real browser
+      headless: true, // headless false to look like real browser
       args: [
         "--disable-dev-shm-usage", // reduces /dev/shm memory use
         "--disable-gpu",
