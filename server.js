@@ -3,6 +3,7 @@ import cors from "cors";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import zomatoRoutes from "./src/routes/zomato.js";
+import path from "path";
 
 dotenv.config();
 
@@ -17,6 +18,11 @@ app.get("/api", (req, res) => {
 });
 
 app.use("/api/zomato", zomatoRoutes);
+
+app.use(
+  "/screenshots",
+  express.static(path.join(process.cwd(), "screenshots"))
+);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
